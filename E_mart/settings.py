@@ -31,6 +31,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://e-mart-v2kw.onrender.com',
+]
+
 ALLOWED_HOSTS = [
     '.onrender.com',  # This allows any subdomain of onrender.com
     'localhost',
