@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -103,7 +103,7 @@ class Wishlist(models.Model):
         
     def __str__(self):
         return f"{self.user.username} - {self.product.name}"
-=======
+
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -208,4 +208,4 @@ class Wishlist(models.Model):
         
     def __str__(self):
         return f"{self.user.username} - {self.product.name}"
->>>>>>> 40351b8156c73bab5e97d8849973739a2a33751e
+
