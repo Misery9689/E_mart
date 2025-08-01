@@ -14,7 +14,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import transaction # Import transaction
 from django.db.models import Count
-from django.core.paginator import Paginator
 
 def Master(request):
     return render(request, 'master.html')
@@ -155,7 +154,12 @@ def Shop(request):
         # Show all products if no category filter
         products = Product.objects.all() # Changed to 'products'
         selected_category = None
-        
+
+    # Pagination logic (from your original template, assuming you have it in your context)
+    # You'll need to implement Django's Paginator here if you want to use products.start_index, etc.
+    # For now, I'm just ensuring 'products' is passed correctly.
+    # Example of basic pagination (you might need to adjust based on your full pagination setup):
+    from django.core.paginator import Paginator
     paginator = Paginator(products, 12) # Show 12 products per page
     page_number = request.GET.get('page')
     products_page = paginator.get_page(page_number)
@@ -241,6 +245,7 @@ def AboutUs(request):
 # MODIFIED: Login view to correctly use AuthenticationForm
 def Login(request):
     if request.method == 'POST':
+        # Use AuthenticationForm for login
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
@@ -256,12 +261,18 @@ def Login(request):
             else:
                 messages.error(request, "Invalid username or password.")
         else:
-            messages.error(request, "Invalid username or password.")
+            messages.error(request, "Invalid username or password.") # Form validation failed
     else:
+        # Use AuthenticationForm for GET requests to display the login form
         form = AuthenticationForm()
     context = {'form': form}
-    # CHANGE THIS LINE - use lowercase 'registration'
-    return render(request, 'registration/login.html', context)
+    # Ensure this path is correct for your login.html template
+    # Based on your previous error, 'Registration/login.html' might be correct
+    # If login.html is directly in app/templates/, use 'login.html'
+    return render(request, 'Registration/login.html', context)
+
+def Register(request):
+    return render(request, 'register.html')
 
 # RENAME THIS FUNCTION - this was causing the conflict!
 
