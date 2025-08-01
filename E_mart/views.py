@@ -256,14 +256,12 @@ def Login(request):
             else:
                 messages.error(request, "Invalid username or password.")
         else:
-            messages.error(request, "Invalid username or password.") # Form validation failed
+            messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
     context = {'form': form}
-    return render(request, 'Registration/login.html', context)
-
-def Register(request):
-    return render(request, 'register.html')
+    # CHANGE THIS LINE - use lowercase 'registration'
+    return render(request, 'registration/login.html', context)
 
 # RENAME THIS FUNCTION - this was causing the conflict!
 
