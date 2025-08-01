@@ -32,7 +32,7 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'e-mart-v2kw.onrender.com',
+    '.onrender.com',  # This allows any subdomain of onrender.com
     'localhost',
     '127.0.0.1',
 ]
